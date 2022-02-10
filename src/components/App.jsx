@@ -1,6 +1,6 @@
-import Form from "./Form/Form";
-import { nanoid } from 'nanoid';
- const formId = nanoid(); 
+import App1 from "./App/App";
+
+ 
 export const App = () => {
   return (
     <div
@@ -15,7 +15,7 @@ export const App = () => {
       }}
     >
 
-      <Form id={formId}/>
+      <App1 />
     </div>
   );
 };

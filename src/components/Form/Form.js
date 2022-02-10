@@ -1,56 +1,60 @@
 import React from 'react';
-import s from './Form.module.css'
+
+import s from './Form.module.css';
 
 class Form extends React.Component {
   state = {
-    contacts: [],
     name: '',
-    };
-    
+    number: '',
+  };
+  handleChangeName = e => {
+    const { name, value } = e.currentTarget;
+    this.setState({ [name]: value });
+  };
 
-  handleChangeName = (event) => {
-    this.setState({name:event.currentTarget.value})
-  }
-
-  addContacts = () => {
-    this.setState(prev =>  prev.name)
-    
-  }
+  reset = () => {
+    this.setState({ name: '', number: '' });
+  };
 
   handleSubmit = e => {
-    e.preventDefault();          
-    return {
-      name: this.state.name,
-      id: this.props.id,
-    };
-  }
+    e.preventDefault();
+    this.props.onSubmit(this.state);
+    console.log(e.currentTarget.value);
 
-
+    this.reset();
+  };
 
   render() {
-   
     return (
       <div className={s.form}>
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor={this.formId}>Name</label>
-          <input
-            type="text"
-            name="name"
-            value={this.state.name}
-            id={this.formId}
-            onChange={this.handleChangeName}
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required
-          />
-
+          <label htmlFor="">
+            Name
+            <input
+              type="text"
+              name="name"
+              onChange={this.handleChangeName}
+              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+              required
+            />
+          </label>
+          <label htmlFor="">
+            Number
+            <input
+              type="tel"
+              name="number"
+              onChange={this.handleChangeName}
+              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+              required
+            />
+          </label>
           <button type="submit">Add contact</button>
         </form>
-        {}
-        
       </div>
     );
-    }
+  }
 }
 
-export default Form
+export default Form;
