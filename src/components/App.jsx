@@ -1,3 +1,6 @@
+import Form from "./Form/Form";
+import { nanoid } from 'nanoid';
+ const formId = nanoid(); 
 export const App = () => {
   return (
     <div
@@ -11,7 +14,8 @@ export const App = () => {
         color: '#010101',
       }}
     >
-      React homework template
+
+      <Form id={formId}/>
     </div>
   );
 };
