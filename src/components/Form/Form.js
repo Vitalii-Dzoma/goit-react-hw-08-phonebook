@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { isEqual } from 'lodash';
 import s from './Form.module.css';
 
 class Form extends React.Component {
@@ -17,18 +17,18 @@ class Form extends React.Component {
   };
 
   disabledButton = () => {
-    contacts.filter(cont =>
-    { this.state.name.toLowerCase() === cont.name.toLowerCase() && alert(`${cont.name} is already declared`) }
-    )
-  }
-  
+    this.props.contacts.forEach(cont => {
+      isEqual(this.state.name.toLowerCase(), cont.name.toLowerCase()) &&
+        alert(`${cont.name} is already declared`);
+    });
+  };
 
   handleSubmit = e => {
     e.preventDefault();
     this.props.onSubmit(this.state);
     console.log(e.currentTarget.value);
-
-    this.reset();
+    this.disabledButton();
+    e.target.reset();
   };
 
   render() {
@@ -59,7 +59,7 @@ class Form extends React.Component {
               required
             />
           </label>
-          <button type="submit" >Add contact</button>
+          <button type="submit">Add contact</button>
         </form>
       </div>
     );
