@@ -16,6 +16,13 @@ class Form extends React.Component {
     this.setState({ name: '', number: '' });
   };
 
+  disabledButton = () => {
+    contacts.filter(cont =>
+    { this.state.name.toLowerCase() === cont.name.toLowerCase() && alert(`${cont.name} is already declared`) }
+    )
+  }
+  
+
   handleSubmit = e => {
     e.preventDefault();
     this.props.onSubmit(this.state);
@@ -25,9 +32,11 @@ class Form extends React.Component {
   };
 
   render() {
+    const { contacts } = this.props;
+    const contact = contacts.filter(cont => cont.name);
     return (
-      <div className={s.form}>
-        <form onSubmit={this.handleSubmit}>
+      <div>
+        <form className={s.form} onSubmit={this.handleSubmit}>
           <label htmlFor="">
             Name
             <input
@@ -50,7 +59,7 @@ class Form extends React.Component {
               required
             />
           </label>
-          <button type="submit">Add contact</button>
+          <button type="submit" >Add contact</button>
         </form>
       </div>
     );
