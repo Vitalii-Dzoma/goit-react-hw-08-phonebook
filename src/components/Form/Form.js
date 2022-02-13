@@ -16,23 +16,26 @@ class Form extends React.Component {
     this.setState({ name: '', number: '' });
   };
 
-  disabledButton = () => {
-    this.props.contacts.forEach(cont => {
-      isEqual(this.state.name.toLowerCase(), cont.name.toLowerCase()) &&
-        alert(`${cont.name} is already declared`);
-    });
-  };
+  // disabledButton = () => {
+  //   this.props.contacts.forEach(cont => {
+  //     if (isEqual(this.state.name.toLowerCase(), cont.name.toLowerCase())) {
+  //       return alert(`${cont.name} is already declared`);
+  //     }
+  //   });
+  // };
 
   handleSubmit = e => {
     e.preventDefault();
+
     this.props.onSubmit(this.state);
-    console.log(e.currentTarget.value);
-    this.disabledButton();
-    e.target.reset();
+
+    // this.disabledButton();
+    this.reset();
   };
 
   render() {
     const { contacts } = this.props;
+    const { name, number } = this.state;
     const contact = contacts.filter(cont => cont.name);
     return (
       <div>
@@ -46,6 +49,7 @@ class Form extends React.Component {
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
               title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
               required
+              value={name}
             />
           </label>
           <label htmlFor="">
@@ -57,6 +61,7 @@ class Form extends React.Component {
               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
               required
+              value={number}
             />
           </label>
           <button type="submit">Add contact</button>

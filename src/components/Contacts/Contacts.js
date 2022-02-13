@@ -4,6 +4,7 @@ class Contacts extends React.Component {
   render() {
     const { contacts } = this.props;
     const { onDelete } = this.props;
+    const { stopRender } = this.props;
     return (
       <>
         <h2>Contacts</h2>

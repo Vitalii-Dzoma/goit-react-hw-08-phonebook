@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './App.module.css';
+import { isEqual } from 'lodash';
 import { nanoid } from 'nanoid';
 import Form from 'components/Form/Form';
 import Contacts from 'components/Contacts/Contacts';
@@ -21,6 +22,15 @@ class App1 extends React.Component {
   };
 
   formSubmitHandler = data => {
+    const contactName = data.name;
+
+    const matchingContact = this.state.contacts.find(cont =>
+      isEqual(contactName.toLowerCase(), cont.name.toLowerCase())
+    );
+    if (matchingContact) {
+      return alert(`${contactName} is already declared`);
+    }
+
     const contact = { ...data, id: nanoid() };
     this.setState(({ contacts }) => ({
       contacts: [...contacts, contact],
@@ -34,7 +44,6 @@ class App1 extends React.Component {
   };
 
   render() {
-    console.log(this.state.contacts);
     const normilizedFilter = this.state.filter.toLowerCase();
     const filteredContacts = this.state.contacts.filter(contact =>
       contact.name.toLowerCase().includes(normilizedFilter)
