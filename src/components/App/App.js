@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import s from './App.module.css';
 import { isEqual } from 'lodash';
 import { nanoid } from 'nanoid';
@@ -14,6 +14,19 @@ export default function App1() {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ]);
   const [filter, setFilter] = useState('');
+
+  useEffect(() => {
+     
+    const contactsNew = localStorage.getItem('contacts');
+    const parsedData = JSON.parse(contactsNew)
+    setContacts(parsedData)
+  
+  },[])
+
+ useEffect(() => {
+    localStorage.setItem('contacts', JSON.stringify(contacts));
+ },[contacts] );
+
 
 const changeFilter = e => {
     setFilter(e.currentTarget.value);
@@ -42,7 +55,24 @@ const changeFilter = e => {
    ) );
   };
 
-  console.log(contacts)
+  // componentDidMount() {
+  //  const contacts =  localStorage.getItem('contacts')
+  //   const parsedData = JSON.parse(contacts)
+  //   if (parsedData) {
+  //     this.setState({ contacts: parsedData });
+  //   }
+    
+  // }
+
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log(prevState)
+  //   console.log(this.state)
+  //   if (this.state.contacts !== prevState.contacts) {
+  //     console.log('Обновилось поле контактов');
+  //     localStorage.setItem("contacts", JSON.stringify(this.state.contacts))
+  //   }
+  // }
 
 
   const normilizedFilter = filter.toLowerCase();
@@ -50,7 +80,7 @@ const changeFilter = e => {
   const filteredContacts = contacts.filter(contact =>
       contact.name.toLowerCase().includes(normilizedFilter)
     );
-console.log(filteredContacts)
+
 
 return (
       <>
