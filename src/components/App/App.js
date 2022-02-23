@@ -31,23 +31,26 @@ const changeFilter = e => {
     }
 
     const contact = { ...data, id: nanoid() };
-    setContacts(({ contacts }) => ({
-      contacts: [...contacts, contact],
-    }));
+    setContacts(PrevContacts => (
+      [...PrevContacts, contact]
+    ))
   };
 
   const deleteObject = contactId => {
-    setContacts(prevState => ({
-      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
-    }));
+    setContacts(prevState => (
+      prevState.filter(contact => contact.id !== contactId)
+   ) );
   };
 
+  console.log(contacts)
 
-const normilizedFilter = filter.toLowerCase();
-const filteredContacts = contacts.filter(contact =>
+
+  const normilizedFilter = filter.toLowerCase();
+  
+  const filteredContacts = contacts.filter(contact =>
       contact.name.toLowerCase().includes(normilizedFilter)
     );
-
+console.log(filteredContacts)
 
 return (
       <>
