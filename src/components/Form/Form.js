@@ -28,7 +28,7 @@ class Form extends React.Component {
     e.preventDefault();
 
     this.props.onSubmit(this.state);
-
+console.log(this.props)
     // this.disabledButton();
     this.reset();
   };
