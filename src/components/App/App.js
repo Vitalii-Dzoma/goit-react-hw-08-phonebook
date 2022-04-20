@@ -34,8 +34,6 @@ export default function App1() {
   const changeFilter = e => {
     dispatch(filterName(e.currentTarget.value));
     setFilter(e.currentTarget.value);
-
-    console.log(newFilter);
   };
 
   const formSubmitHandler = data => {
@@ -60,8 +58,8 @@ export default function App1() {
     );
   };
 
-  const normilizedFilter = filter.toLowerCase();
-  const filteredContacts = contacts.filter(contact =>
+  const normilizedFilter = newFilter.toLowerCase();
+  const filteredContacts = newContact.filter(contact =>
     contact.name.toLowerCase().includes(normilizedFilter)
   );
 

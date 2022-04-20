@@ -24,8 +24,7 @@ export const filterSlice = createSlice({
   initialState: '',
   reducers: {
     filterName(state, action) {
-      console.log(action.payload);
-      state = state + action.payload;
+      return state + action.payload;
     },
   },
 });
@@ -38,7 +37,7 @@ const persistConfig = {
 export const itemsReducer = persistReducer(persistConfig, itemsSlice.reducer);
 export const { add, remove } = itemsSlice.actions;
 
-export const { filterName } = itemsSlice.actions;
+export const { filterName } = filterSlice.actions;
 
 // Selectors
 export const getItemsValue = state => state.items.contacts;
