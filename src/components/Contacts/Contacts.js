@@ -5,7 +5,6 @@ import { remove } from 'redux/itemsSlice';
 
 export default function RenderContacts({ contacts, onDelete, stopRender }) {
   const contactItems = useSelector(state => state.items.contacts);
-  console.log(contactItems);
   const dispatch = useDispatch();
   return (
     <>
@@ -15,7 +14,7 @@ export default function RenderContacts({ contacts, onDelete, stopRender }) {
         {contactItems.map(({ name, number, id }) => (
           <li key={id}>
             {name} : {number}
-            <button onClick={() => onDelete(id)}>Delete</button>
+            <button onClick={() => dispatch(remove(id))}>Delete</button>
           </li>
         ))}
       </ul>

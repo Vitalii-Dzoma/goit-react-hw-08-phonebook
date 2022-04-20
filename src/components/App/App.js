@@ -6,10 +6,13 @@ import Form from 'components/Form/Form';
 import Contacts from 'components/Contacts/Contacts';
 import Filter from 'components/Filter/Filter';
 import { useSelector, useDispatch } from 'react-redux';
-import { add, remove } from '../../redux/itemsSlice';
+import { add, remove, filterName } from '../../redux/itemsSlice';
 
 export default function App1() {
   const dispatch = useDispatch();
+  const newContact = useSelector(state => state.items.contacts);
+  const newFilter = useSelector(state => state.filter);
+  console.log(newFilter);
   const [contacts, setContacts] = useState([
     // { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
     // { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
@@ -29,13 +32,16 @@ export default function App1() {
   // }, [contacts]);
 
   const changeFilter = e => {
+    dispatch(filterName(e.currentTarget.value));
     setFilter(e.currentTarget.value);
+
+    console.log(newFilter);
   };
 
   const formSubmitHandler = data => {
     const contactName = data.name;
 
-    const matchingContact = contacts.find(cont =>
+    const matchingContact = newContact.find(cont =>
       isEqual(contactName.toLowerCase(), cont.name.toLowerCase())
     );
     if (matchingContact) {
@@ -55,11 +61,9 @@ export default function App1() {
   };
 
   const normilizedFilter = filter.toLowerCase();
-  const newContacts = useSelector(state => state.items.contacts);
   const filteredContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(normilizedFilter)
   );
-  console.log(filteredContacts);
 
   return (
     <>
