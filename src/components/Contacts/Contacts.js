@@ -4,14 +4,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { remove } from 'redux/itemsSlice';
 
 export default function RenderContacts({ contacts, onDelete, stopRender }) {
-  const contactItems = useSelector(state => state.items.contacts);
   const dispatch = useDispatch();
   return (
     <>
       <h2>Contacts</h2>
       <p>Find contacts by name</p>
       <ul>
-        {contactItems.map(({ name, number, id }) => (
+        {contacts.map(({ name, number, id }) => (
           <li key={id}>
             {name} : {number}
             <button onClick={() => dispatch(remove(id))}>Delete</button>

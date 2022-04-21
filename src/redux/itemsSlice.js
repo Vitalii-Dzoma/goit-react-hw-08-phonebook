@@ -24,7 +24,7 @@ export const filterSlice = createSlice({
   initialState: '',
   reducers: {
     filterName(state, action) {
-      return state + action.payload;
+      return (state = action.payload);
     },
   },
 });
