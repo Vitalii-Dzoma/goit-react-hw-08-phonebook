@@ -14,7 +14,6 @@ export default function App1() {
   const newFilter = useSelector(state => state.filter);
   const changeFilter = e => {
     dispatch(filterName(e.currentTarget.value));
-    setFilter(e.currentTarget.value);
   };
 
   const formSubmitHandler = data => {
