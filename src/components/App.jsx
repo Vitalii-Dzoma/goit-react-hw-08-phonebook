@@ -6,6 +6,7 @@ import { store, persistor } from './../redux/store';
 import { Routes, Route } from 'react-router-dom';
 import HomePage from './HomepPage/HomePage';
 import { ContactList } from './ContactlList/ContactList';
+import { CreateContactPage } from './CreateContact/CreateContact';
 
 export const App = () => {
   return (
@@ -22,6 +23,7 @@ export const App = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="contacts" element={<ContactList />} />
+            <Route path="contacts/create" element={<CreateContactPage />} />
           </Routes>
         </Suspense>
       </Provider>
