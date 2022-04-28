@@ -13,7 +13,7 @@ export const App = () => {
     <div
       style={{
         height: '100vh',
-        fontSize: 40,
+        fontSize: 20,
         textTransform: 'uppercase',
         color: '#010101',
       }}

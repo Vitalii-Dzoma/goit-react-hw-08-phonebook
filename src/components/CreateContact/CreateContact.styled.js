@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-export const Ul = styled.ul`
+
+export const Form = styled.form`
   display: flex;
-  flex-wrap: wrap;
-  list-style: none;
+  justify-content: center;
   padding: 0;
 `;

@@ -1,10 +1,11 @@
-import { useState } from 'react';
 import { useCreateContactMutation } from 'redux/contacts';
-
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
+import { Form } from './CreateContact.styled';
 export const CreateContactPage = () => {
-  const [createContact] = useCreateContactMutation();
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [createContact, { isLoading, isSuccess }] = useCreateContactMutation();
+
+  const navigate = useNavigate();
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -24,21 +25,43 @@ export const CreateContactPage = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(e.currentTarget.elements.phone.value);
-    createContact({
-      name: e.currentTarget.elements.content.value,
-      phone: e.currentTarget.elements.phone.value,
-    });
+    const name = e.currentTarget.elements.content.value;
+    const phone = e.currentTarget.elements.phone.value;
+
     e.currentTarget.reset();
+    createContact({
+      name,
+      phone,
+    });
+
+    navigate('/contacts', { replace: true });
   };
 
   return (
     <>
       <form autoComplete="off" onSubmit={handleSubmit}>
-        <input type="text" name="content" onChange={handleChange} />
-        <input type="number" name="phone" onChange={handleChange} />
-        <button type="submit">CreateCOntact</button>
+        <input
+          type="text"
+          name="content"
+          placeholder="Name"
+          onChange={handleChange}
+        />
+        <input
+          type="number"
+          name="phone"
+          placeholder="Phone number"
+          onChange={handleChange}
+        />
+        <button
+          type="submit"
+          onClick={() => toast.success('Contact has been created')}
+        >
+          Create Contact
+        </button>
       </form>
+      <button type="button" onClick={() => navigate(-1, { replace: true })}>
+        Go back
+      </button>
     </>
   );
 };
