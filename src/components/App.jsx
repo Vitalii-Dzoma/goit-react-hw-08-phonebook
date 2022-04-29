@@ -24,6 +24,7 @@ export const App = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="contacts" element={<ContactList />} />
             <Route path="contacts/create" element={<CreateContactPage />} />
+            <Route path="*" element={<HomePage />} />
           </Routes>
         </Suspense>
       </Provider>
