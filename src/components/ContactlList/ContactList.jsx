@@ -1,4 +1,4 @@
-import { useGetContactsQuery, useDeleteContactMutation } from 'redux/contacts';
+import { useGetContactsQuery} from 'redux/contacts';
 import { Link } from 'react-router-dom';
 import { ContactItem } from 'components/ContactItem/ContactItem';
 import { Bars } from 'react-loader-spinner';
