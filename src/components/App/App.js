@@ -48,7 +48,6 @@ export const App1 = () => {
   );
   return (
     <>
-      {/* <Form onSubmit={formSubmitHandler} contacts={filteredContacts} /> */}
       <Filter value={newFilter} onChangeFilter={changeFilter} />
       <ContactList
         filteredContacts={filteredContacts}
