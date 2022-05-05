@@ -16,6 +16,9 @@ const itemsSlice = createSlice({
         contact => contact.id !== action.payload
       );
     },
+    refill(state, action) {
+      state.contacts = action.payload;
+    },
   },
 });
 
@@ -35,7 +38,7 @@ const persistConfig = {
 };
 
 export const itemsReducer = persistReducer(persistConfig, itemsSlice.reducer);
-export const { add, remove } = itemsSlice.actions;
+export const { add, remove, refill } = itemsSlice.actions;
 
 export const { filterName } = filterSlice.actions;
 

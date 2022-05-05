@@ -1,8 +1,11 @@
 import React from 'react';
 import s from './Filter.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { filterName } from '../../redux/itemsSlice';
+
 const Filter = ({ value, onChangeFilter }) => {
+  const dispatch = useDispatch();
+
   return (
     <label htmlFor="">
       Фильтр по имени:
