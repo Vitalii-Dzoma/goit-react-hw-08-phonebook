@@ -82,7 +82,7 @@ export const App = () => {
   );
 };
 
-function PublicRoute({ children, restricted = false, redirectTo }) {
+function PublicRoute({ children, restricted = false, redirectTo = '/' }) {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const navigate = useNavigate();
 

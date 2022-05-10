@@ -14,6 +14,7 @@ import { authReducer } from './auth';
 import { contactApi } from './contacts';
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
 import { itemsReducer, filterSlice } from './../redux/itemsSlice';
+import contactsReducer from './contacts/contacts-reducers';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -29,15 +30,24 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
+// export const store = configureStore({
+//   reducer: {
+//     items: itemsReducer,
+//     filter: filterSlice.reducer,
+//     [contactApi.reducerPath]: contactApi.reducer,
+//     auth: persistReducer(authPersistConfig, authReducer),
+//   },
+//   middleware,
+//   devTools: process.env.NODE_ENV === 'development',
+// });
 export const store = configureStore({
   reducer: {
-    items: itemsReducer,
-    filter: filterSlice.reducer,
-    [contactApi.reducerPath]: contactApi.reducer,
     auth: persistReducer(authPersistConfig, authReducer),
+    contacts: contactsReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
 });
+
 export const persistor = persistStore(store);
 setupListeners(store.dispatch);
