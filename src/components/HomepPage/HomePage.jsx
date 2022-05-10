@@ -1,27 +1,28 @@
-// import { useGetContacts } from 'redux/contacts';
-import { Link } from './HomePage.styled';
-import { Ul } from './HomePage.styled';
-import { Outlet } from 'react-router-dom';
-const HomePage = () => {
-  //   const dispatch = useDispatch();
-  //   const { data, isFetching } = useGetContacts();
+import React from 'react';
 
-  return (
-    <>
-      <h2>Homepage</h2>
-      <Ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/contacts">Contacts</Link>
-        </li>
-        <li>
-          <Link to="/contacts/create">Create contact</Link>
-        </li>
-      </Ul>
-    </>
-  );
+const styles = {
+  container: {
+    minHeight: 'calc(100vh - 50px)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  title: {
+    fontWeight: 500,
+    fontSize: 48,
+    textAlign: 'center',
+  },
 };
 
-export default HomePage;
+const HomeView = () => (
+  <div style={styles.container}>
+    <h1 style={styles.title}>
+      Приветственная страница нашего сервиса{' '}
+      <span role="img" aria-label="Иконка приветствия">
+        💁‍♀️
+      </span>
+    </h1>
+  </div>
+);
+
+export default HomeView;
