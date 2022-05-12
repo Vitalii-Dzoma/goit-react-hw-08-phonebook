@@ -28,11 +28,8 @@ const fetchContacts = () => async dispatch => {
 };
 
 // POST @ /tasks
-const addContact = description => dispatch => {
-  const contact = {
-    description,
-    completed: false,
-  };
+const addContact = data => dispatch => {
+  const contact = { ...data };
 
   dispatch(addContactsRequest());
 

@@ -2,10 +2,13 @@ import { useCreateContactMutation } from 'redux/contacts';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { Form } from './CreateContact.styled';
+import { useDispatch } from 'react-redux';
+import contactsOperations from '../../redux/contacts/contacts-operations';
 export const CreateContactPage = () => {
-  const [createContact, { isLoading, isSuccess }] = useCreateContactMutation();
+  // const [createContact, { isLoading, isSuccess }] = useCreateContactMutation();
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -26,13 +29,14 @@ export const CreateContactPage = () => {
   const handleSubmit = e => {
     e.preventDefault();
     const name = e.currentTarget.elements.content.value;
-    const phone = e.currentTarget.elements.phone.value;
+    const number = e.currentTarget.elements.phone.value;
 
     e.currentTarget.reset();
-    createContact({
-      name,
-      phone,
-    });
+    // createContact({
+    //   name,
+    //   phone,
+    // });
+    dispatch(contactsOperations.addContact({ name, number }));
 
     navigate('/contacts', { replace: true });
   };

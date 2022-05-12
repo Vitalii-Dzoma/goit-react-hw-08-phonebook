@@ -7,6 +7,7 @@ import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import HomeView from './HomepPage/HomePage';
 import { ContactList } from './ContactlList/ContactList';
 import { CreateContactPage } from './CreateContact/CreateContact';
+import ContactView from './views/ContactsView/ContactView';
 import Filter from './Filter/Filter';
 import AppBar from './AppBar/AppBar';
 import { authOperations, authSelectors } from '../redux/auth';
@@ -63,7 +64,7 @@ export const App = () => {
             path="/contacts"
             element={
               <PrivateRoute redirectTo="/login">
-                <App1 />
+                <ContactView />
               </PrivateRoute>
             }
           />

@@ -23,7 +23,7 @@ const getVisibleContacts = createSelector(
   (contacts, filter) => {
     const normalizedFilter = filter.toLowerCase();
     return contacts.filter(({ description }) =>
-      description.toLowerCase().includes(normalizedFilter)
+      description?.toLowerCase().includes(normalizedFilter)
     );
   }
 );
@@ -34,5 +34,6 @@ const contactsSelectors = {
   getVisibleContacts,
   getTotalContactCount,
   getCompletedContactCount,
+  getAllContacts,
 };
 export default contactsSelectors;
