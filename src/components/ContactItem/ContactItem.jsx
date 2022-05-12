@@ -4,7 +4,7 @@ import { Li, Button } from './ContactItem.styled';
 
 const notify = () => toast('Contact has been deleted.');
 
-export const ContactItem = ({ id, name, number }) => {
+export const ContactItem = ({ id, name, number, onDelete }) => {
   // const [deleteTodo, { isLoading: isDeleting }] = useDeleteContactMutation();
   return (
     <>
@@ -12,10 +12,11 @@ export const ContactItem = ({ id, name, number }) => {
         {`Mr ${name} : ${number}`}
         <Button
           onClick={() => {
-            deleteTodo(id), notify;
+            onDelete(id), notify;
           }}
-          // disabled={isDeleting}
-        ></Button>
+        >
+          Delete
+        </Button>
       </Li>
     </>
   );

@@ -83,11 +83,10 @@ export const App = () => {
   );
 };
 
-function PublicRoute({ children, restricted = false, redirectTo = '/' }) {
+function PublicRoute({ children, redirectTo = '/' }) {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  const navigate = useNavigate();
 
-  const shouldRedirect = isLoggedIn && restricted;
+  const shouldRedirect = isLoggedIn;
   return shouldRedirect ? <Navigate to={redirectTo} /> : children;
 }
 

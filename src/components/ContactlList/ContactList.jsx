@@ -8,11 +8,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import contactsOperations from '../../redux/contacts/contacts-operations';
 import contactsSelectors from '../../redux/contacts/contacts-selectors';
 
-export const ContactList = ({ contacts, isLoading }) => {
+export const ContactList = ({ isLoading }) => {
   const dispatch = useDispatch();
-  const contactsVisible = useSelector(contactsSelectors.getVisibleContacts);
-
-  const onDeleteTodo = id => dispatch(contactsOperations.deleteTodo(id));
+  const contacts = useSelector(contactsSelectors.getVisibleContacts);
+  console.log(contacts);
+  const onDeleteContact = id => dispatch(contactsOperations.deleteContact(id));
   // const onToggleCompleted = id => dispatch(todosOperations.toggleCompleted(id));
   return (
     <>
@@ -23,7 +23,11 @@ export const ContactList = ({ contacts, isLoading }) => {
       <Ul>
         {contacts &&
           contacts.map(contact => (
-            <ContactItem key={contact.id} {...contact} />
+            <ContactItem
+              key={contact.id}
+              {...contact}
+              onDelete={onDeleteContact}
+            />
           ))}
       </Ul>
     </>

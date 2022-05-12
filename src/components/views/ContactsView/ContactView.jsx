@@ -31,19 +31,10 @@ export default function ContactView(params) {
     <Container>
       <div style={barStyles}>
         <Filter />
-        {/* <Stats /> */}
-        {/* <IconButton onClick={toggleModal} aria-label="Добавить todo">
-          <AddIcon width="40" height="40" fill="#fff" />
-        </IconButton> */}
 
         {isLoadingContacts && <h1>Загружаем...</h1>}
       </div>
       <ContactList contacts={fetchedContacts} isLoading={isLoadingContacts} />
-      {/* {isModalOpen && (
-        <Modal onClose={toggleModal}>
-          <TodoEditor onSave={toggleModal} />
-        </Modal> */}
-      {/* )} */}
     </Container>
   );
 }
