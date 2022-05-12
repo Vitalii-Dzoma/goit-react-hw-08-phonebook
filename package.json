@@ -14,6 +14,7 @@
     "gh-pages": "^3.2.3",
     "lodash.isequal": "^4.5.0",
     "nanoid": "^3.2.0",
+    "netlify": "^11.0.1",
     "netlify-cli": "^10.1.0",
     "react": "^17.0.2",
     "react-bootstrap": "^2.3.1",
