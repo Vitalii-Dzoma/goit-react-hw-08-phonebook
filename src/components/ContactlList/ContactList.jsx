@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ContactItem } from 'components/ContactItem/ContactItem';
+import Typography from '@mui/material/Typography';
 import { Bars } from 'react-loader-spinner';
 import { Ul } from './ContactList.styled';
 import Filter from 'components/Filter/Filter';
@@ -17,7 +18,10 @@ export const ContactList = ({ isLoading }) => {
   return (
     <>
       <h2>Contacts</h2>
-      <Link to="/contacts/create">Create contact</Link>
+      <Typography>
+        <Link to="/contacts/create">Create contact</Link>
+      </Typography>
+
       <Outlet />
       {isLoading && <Bars />}
       <Ul>

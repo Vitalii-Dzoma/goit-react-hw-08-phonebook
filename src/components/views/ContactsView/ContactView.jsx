@@ -2,12 +2,9 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Container from '../../Container/Container';
 import { ContactList } from '../../ContactlList/ContactList';
-// import TodoEditor from '../components/TodoEditor';
+
 import Filter from '../../Filter/Filter';
-// import Stats from '../components/Stats';
-// import Modal from '../../Modal/Modal';
-// import IconButton from '../components/IconButton';
-// import { ReactComponent as AddIcon } from '../icons/add.svg';
+
 import contactsOperations from '../../../redux/contacts/contacts-operations';
 import contactsSelectors from '../../../redux/contacts/contacts-selectors';
 

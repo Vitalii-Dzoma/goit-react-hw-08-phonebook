@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from '../../redux/auth';
+import Button from '@mui/material/Button';
 
 const styles = {
   form: {
@@ -70,7 +71,9 @@ export default function RegisterView() {
           />
         </label>
 
-        <button type="submit">Зарегистрироваться</button>
+        <Button variant="contained" color="primary" type="submit">
+          Зарегистрироваться
+        </Button>
       </form>
     </div>
   );
